@@ -1,0 +1,66 @@
+<div class="p-3" style="min-height: 80vh;">
+    <button (click)="backtohome($event)" class="btn btn-warning">Back Home</button>
+    <div class="d-flex justify-content-center p-2 flex-column align-items-center " >
+      <h2>Edit Account Information</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form-light">
+        <div class="form-group">
+          <div  class="border p-2 rounded">ID: {{id}}</div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label class="form-label">Name:</label>
+          <input type="text" formControlName="name" class="form-control"/>
+          <small style="color: red;" *ngIf="editForm.controls['name'].invalid && editForm.controls['name'].touched">Name Required</small>
+
+        </div>
+        
+        <br>
+        <div class="form-group">
+          <label class="form-label">Username:</label>
+          <input type="text" formControlName="username" class="form-control"/>
+          <small style="color: red;" *ngIf="editForm.controls['username'].invalid && editForm.controls['username'].touched">Username Required</small>
+
+        </div>
+        <br>
+
+        <div class="form-group">
+          <label class="form-label">Email:</label>
+          <input type="email" formControlName="email" class="form-control"/>
+          <small style="color: red;" *ngIf="editForm.controls['email'].invalid && editForm.controls['email'].touched">Email Required</small>
+
+        </div>
+
+        <br>
+        <div class="form-group">
+          <label class="form-label">Role:</label>
+          <select formControlName="role" class="form-select w-100 bg-light">
+            <option *ngFor="let option of roleOptions" [value]="option">{{ option }}</option>
+          </select>
+          <small style="color: red;" *ngIf="editForm.controls['role'].invalid && editForm.controls['role'].touched">Role Required</small>
+
+        </div>
+        <br>
+        <div class="form-group">
+          <label class="form-label">Password:</label>
+          
+          <div class="d-flex">
+            <input type="text" formControlName="password" class="form-control" [type]="showPassword == true ? 'text' : 'password'"/> &nbsp;&nbsp;
+            <button class="btn btn-outline-secondary" type="button" (click)="togglePassword()"> 
+              <i class="bi" [ngClass]="{ 'bi-eye': !showPassword, 'bi-eye-slash': showPassword }"> </i> 
+              </button> 
+            </div>
+            <small style="color: red;" *ngIf="editForm.controls['password'].invalid && editForm.controls['password'].touched">Password Required</small>
+
+          
+        </div>
+        <br>
+        
+        <div class="text-center">
+          <button type="submit" [disabled]="!editForm.valid" [ngClass]="!editForm.valid ? 'btn btn-secondary' : 'btn btn-success'">Edit Account</button>  <br> <br>
+          <div style="color: red;"> {{message}}</div>
+        </div>
+      </form>
+    
+    </div>
+    
+    </div>

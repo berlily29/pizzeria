@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light bg-dark px-5 text-white">
+    
+<div class="d-flex align-items-center">
+    <img src="pizzeria_logo.png" width="70" height="70"  alt="">
+    <div>Hello! {{ username }}</div>
+</div>
+
+    <button class="btn btn-danger" (click)="logout()">Log out</button>
+</nav>
+
+
+<router-outlet ></router-outlet>
+
+<div class="footer bg-dark d-flex align-items-center justify-content-center text-white" style="min-height: 8vh;">Yambao Pizzeria 2024 &trade;</div>
