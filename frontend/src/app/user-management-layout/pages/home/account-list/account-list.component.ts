@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { employee } from '../models/type/emptype';
-import { employees } from '../models/data/emplist';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../api.service';
@@ -16,7 +15,6 @@ filteredUsers: employee[] = [];
 curr_filter: string = 'all';
 pages: any[] = Array.from({ length: 10 }).map((_, i) => `${i + 1}`);
 root: boolean = false;
-showPassword: boolean = false;
 currentId: any = 0;
 
   
@@ -103,8 +101,18 @@ getCurrentPageItems(): any[] {
 
   }
 
-  togglePassword() {
-    this.showPassword = !this.showPassword;
+  togglePassword(visibility: any,id: number) {
+    if (visibility === 'hidden') {
+      visibility = {visibility : 'shown'};
+    }
+    else {
+      visibility = {visibility : 'hidden'};
+    }
+    this.api.updateVisibility(visibility,id).subscribe()
+    setTimeout(() => {
+      this.router.navigateByUrl('/home/add-account', {skipLocationChange: true}).then(()=>
+        this.router.navigateByUrl('/home/account-list'));
+    }, 50);
   }
 
   addAccount(e:any):void {

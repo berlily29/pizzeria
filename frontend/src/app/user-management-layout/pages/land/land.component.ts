@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { employees } from '../home/models/data/emplist';
 import { employee } from '../home/models/type/emptype';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -28,6 +27,7 @@ export class LandComponent {
   constructor(private fb: FormBuilder, private router:Router, private aes: AesServiceService, private api: ApiService) { 
 
     this.api.getAllEmployees().subscribe(data => this.users = data as employee[])
+    console.log(this.users)
   }
 
   ngOnInit(): void {

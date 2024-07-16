@@ -84,6 +84,30 @@ class Controller extends BaseController
         return response()->json($employee, 200);
     }
 
+    public function updateVisibility(Request $request, $id)
+    {
+        // $this->validate($request, [
+        //     'name' => 'required|string',
+        //     'username' => 'required|string|unique:employees,username,' . $id,
+        //     'email' => 'required|email|unique:employees,email,' . $id,
+        //     'role' => 'required|string',
+        //     'password' => 'nullable|string'
+        // ]);
+
+        $employee = Employees::findOrFail($id);
+        $employee-> visibility = $request->input('visibility');
+
+       
+        
+        // if ($request->has('password')) {
+        //     $employee->password = app('hash')->make($request->input('password'));
+        // }
+
+        $employee->save();
+
+        return response()->json($employee, 200);
+    }
+
     
 }
 

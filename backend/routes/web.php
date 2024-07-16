@@ -22,6 +22,8 @@ $router->group(['prefix' => 'employees'], function () use ($router) {
     $router->delete('{id}', 'Controller@deleteEmployee');
     $router->put('{id}', 'Controller@updateEmployee');
     $router->post('', 'Controller@storeEmployee');
+    $router->put('/show/{id}', 'Controller@updateVisibility');
+
 });
 
 // $router->get('/employees', 'Controller@getAllEmployees');

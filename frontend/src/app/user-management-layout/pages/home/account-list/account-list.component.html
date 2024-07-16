@@ -22,9 +22,7 @@
       <th>Name</th>
       <th>Username</th>
       <th>password
-        <button class="btn btn-outline-secondary" type="button" (click)="togglePassword()"> 
-        <i class="bi" [ngClass]="{ 'bi-eye': !showPassword, 'bi-eye-slash': showPassword }"> </i> 
-        </button> 
+        
       </th>
       <th>Email</th>
       <th>Role</th>
@@ -38,7 +36,11 @@
       <td style="max-width: 75px;" class="overflow-x-auto">{{ user.name }}</td>
       <td style="max-width: 75px;" class="overflow-x-auto">{{ user.username }}</td>
       <td style="max-width: 75px;" > 
-      <input class="overflow-x-auto" id="password" value="{{ user.password }}" disabled  [type]="showPassword == true ? 'text' : 'password'"> </td>
+      <input class="overflow-x-auto" id="password" value="{{ user.password }}" disabled  [type]="user.visibility == 'hidden' ? 'password' :  'text'"> 
+      <button class="btn" type="button" (click)="togglePassword(user.visibility, user.id)"> 
+        <i class="bi" [ngClass]="user.visibility == 'hidden' ? 'bi-eye': 'bi-eye-slash'"> </i> 
+      </button> 
+    </td>
       
       <td style="max-width: 75px;" class="overflow-x-auto">{{ user.email }}</td>
       <td style="max-width: 75px;" class="overflow-x-auto">{{ user.role }}</td>

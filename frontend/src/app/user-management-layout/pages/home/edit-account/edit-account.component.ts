@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms'
-import { employees } from '../models/data/emplist';
 import { employee } from '../models/type/emptype';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -63,7 +62,7 @@ export class EditAccountComponent {
       Swal.fire({
         title: "Are you sure that you want some changes?",
         showDenyButton: true,
-        showCancelButton: true,
+        showCancelButton: false,
         confirmButtonText: "Edit",
         denyButtonText: `Don't Edit`
       }).then((result) => {

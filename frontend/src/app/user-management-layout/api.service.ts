@@ -29,5 +29,10 @@ export class ApiService {
     return this.http.put<employee[]>(`http://localhost:8000/employees/${id}`, employee);
   }
 
+  updateVisibility(visibility: string, id: number): Observable<any> {
+    console.log(visibility)
+    return this.http.put<any>(`http://localhost:8000/employees/show/${id}`, visibility);
+  }
+
   
 }

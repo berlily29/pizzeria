@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { employee } from '../models/type/emptype';
-import { employees } from '../models/data/emplist';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AesServiceService } from '../../../aes-service.service';
@@ -61,7 +60,7 @@ export class AddAccountComponent {
       Swal.fire({
         title: "Are you sure about the information?",
         showDenyButton: true,
-        showCancelButton: true,
+        showCancelButton: false,
         confirmButtonText: "Create",
         denyButtonText: `Cancel`
       }).then((result) => {

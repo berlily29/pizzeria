@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { employees } from './models/data/emplist';
 import { employee} from './models/type/emptype';
 import { Router } from '@angular/router';
 @Component({
@@ -8,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  emp: employee[] = employees
+  emp: employee[] = []
 
   username: any = localStorage.getItem('currUser');
 

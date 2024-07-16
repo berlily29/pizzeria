@@ -4,5 +4,6 @@ export interface employee {
     username: string;
     email: string;
     role: string;
-    password: string
+    password: string;
+    visibility: string;
   }
