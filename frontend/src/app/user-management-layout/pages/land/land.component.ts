@@ -27,7 +27,6 @@ export class LandComponent {
   constructor(private fb: FormBuilder, private router:Router, private aes: AesServiceService, private api: ApiService) { 
 
     this.api.getAllEmployees().subscribe(data => this.users = data as employee[])
-    console.log(this.users)
   }
 
   ngOnInit(): void {
@@ -38,28 +37,20 @@ export class LandComponent {
   }
 
   onSubmit() {
+
+
+
     if (this.loginForm.valid) {
       const formData = this.loginForm.value;
+      this.message = "Email not found"
+      this.loginForm.reset()
 
       this.users.forEach((e) => { 
 
-        if(e.email == formData.email && e.password == formData.password && e.role == 'admin' && e.id == 1) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Login Success",
-            showConfirmButton: false,
-            timer: 1500
-          });
-          localStorage.setItem('currUser',e.username)
-          localStorage.setItem('currUserId',e.id)
+        if (e.email == formData.email && e.role == 'admin') 
 
-          this.router.navigateByUrl('/home');
-
-        }
-
-        else if (e.email == formData.email && this.aes.decrypt(e.password) == formData.password && e.role == 'admin') {
-
+          {
+            if (e.password == formData.password  && e.id == 1) {
           Swal.fire({
             position: "center",
             icon: "success",
@@ -72,22 +63,36 @@ export class LandComponent {
           localStorage.setItem('currUserId',e.id)
           this.router.navigateByUrl('/home');
 
-        }
+            }
 
-        else {
+            else if (this.aes.decrypt(e.password) == formData.password) {
 
-          
-          this.loginForm.reset()
-          this.message = "Wrong Email/Password"
+           Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Login Success",
+              showConfirmButton: false,
+              timer: 1500
+            });
+  
+            localStorage.setItem('currUser',e.username)
+            localStorage.setItem('currUserId',e.id)
+            this.router.navigateByUrl('/home');
+            }
 
-        }
+            else {
+              this.loginForm.reset()
+              this.message = "Wrong Password"
+            }
+
+            
+      }  
       })
 
+     
 
-    } else {
-      
-      this.message = "ERROR!"
-    }
+    } 
+    
   }
 
   togglePassword() {

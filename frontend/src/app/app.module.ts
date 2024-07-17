@@ -9,6 +9,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination'; // Import ngx-pagination module
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,7 @@ import { RouterModule } from '@angular/router';
     SweetAlert2Module,
     ReactiveFormsModule,
     HttpClientModule,
-    
+    NgxPaginationModule
     
   ],
   providers: [

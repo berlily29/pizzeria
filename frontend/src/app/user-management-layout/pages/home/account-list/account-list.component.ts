@@ -11,47 +11,36 @@ import { ApiService } from '../../../api.service';
 export class AccountListComponent {
 users: employee[] = [];
 //new BehaviorSubject<employee[]>([]) 
-filteredUsers: employee[] = [];
 curr_filter: string = 'all';
-pages: any[] = Array.from({ length: 10 }).map((_, i) => `${i + 1}`);
 root: boolean = false;
 currentId: any = 0;
+filter:any;
 
+filtered: employee[] = []
   
 // Pagination variables
 currentPage: number = 1;
-itemsPerPage:number = 5;
+totalLength: any;
+page:number = 1;
+// itemsPerPage:number = 5;
 
-// Function to change page
-onPageChange(pageNumber: number): void {
-  this.currentPage = pageNumber;
-}
-
-// Function to determine items for current page
-getCurrentPageItems(): any[] {
-  const startIndex = (this.currentPage - 1) * this.itemsPerPage; 
-  return this.filteredUsers.slice(startIndex, startIndex + this.itemsPerPage); 
-}
-  
 
   constructor(private router:Router,private api:ApiService) {
 
     this.api.getAllEmployees().subscribe(data => {
       this.users = data as employee[];
-      this.filteredUsers = [...this.users];
-
       this.currentId = localStorage.getItem('currUserId')
-      
+      this.filtered = this.users;
     })
     
   }
 
   filterByRole(role: any) {
     if (role.value === 'all') {
-      this.filteredUsers = [...this.users];
+      this.filtered = [...this.users];
       this.curr_filter = role.value;
     } else {
-      this.filteredUsers = this.users.filter(user => user.role === role.value);
+      this.filtered = this.users.filter(user => user.role === role.value);
       this.curr_filter = role.value;
     }
   }

@@ -1,0 +1,8 @@
+.pagination {
+    padding:10px 20px;
+    width: 100%;
+}
+
+.pagination::ng-deep .ngx-pagination .current {
+    background-color: rgb(202, 136, 12);
+}

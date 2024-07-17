@@ -9,6 +9,9 @@ import { AccountListComponent } from './account-list/account-list.component';
 import { FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxSearchFilterModule } from 'ngx-search-filter';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     SweetAlert2Module,
     ReactiveFormsModule,
+    NgxPaginationModule,
+    NgxSearchFilterModule
   ]
 })
 export class HomeModule { }

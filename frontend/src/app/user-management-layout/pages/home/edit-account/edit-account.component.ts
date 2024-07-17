@@ -77,7 +77,10 @@ export class EditAccountComponent {
                {
               formData.password = this.aes.encrypt(formData.password)
               this.api.updateEmployee(formData,this.id).subscribe()
-              this.router.navigateByUrl('/home');
+
+              setTimeout(() => {
+                this.router.navigateByUrl('/home');
+              },50)
             }
       
       });

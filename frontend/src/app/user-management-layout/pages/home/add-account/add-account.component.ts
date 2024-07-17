@@ -71,7 +71,10 @@ export class AddAccountComponent {
           var formData = this.employeeForm.value;
           formData.password = this.aes.encrypt(formData.password)
           this.api.createEmployee(formData).subscribe()
-          this.router.navigateByUrl('/home');
+
+          setTimeout(() => {
+                this.router.navigateByUrl('/home');
+              },50)
 
 
         } else if (result.isDenied) {
