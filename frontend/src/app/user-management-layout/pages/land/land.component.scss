@@ -15,4 +15,9 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
 .diag {
     background-color: rgb(46, 33, 33);
     box-shadow: 2px 2px 20px 10px black;
+    transition: .8s ease-out;
+}
+
+.diag:hover {
+    transform: scale(1.05);
 }
