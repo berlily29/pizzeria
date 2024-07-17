@@ -8,7 +8,7 @@
         </div>
         <br>
         <div class="form-group">
-          <label class="form-label">*Name:</label>
+          <label class="form-label">Name <i style="color: red;">*</i></label>
           <input type="text" formControlName="name" class="form-control"/>
           <small style="color: red;" *ngIf="editForm.controls['name'].invalid && editForm.controls['name'].touched">Name Required  <i class="fa fa-warning"></i></small>
 
@@ -16,7 +16,7 @@
         
         <br>
         <div class="form-group">
-          <label class="form-label">*Username:</label>
+          <label class="form-label">Username <i style="color: red;">*</i></label>
           <input type="text" formControlName="username" class="form-control"/>
           <small style="color: red;" *ngIf="editForm.controls['username'].invalid && editForm.controls['username'].touched">Username Required  <i class="fa fa-warning"></i></small>
 
@@ -24,7 +24,7 @@
         <br>
 
         <div class="form-group">
-          <label class="form-label">*Email:</label>
+          <label class="form-label">Email <i style="color: red;">*</i></label>
           <input type="email" formControlName="email" class="form-control"/>
           <small style="color: red;" *ngIf="editForm.controls['email'].invalid && editForm.controls['email'].touched">Email Required  <i class="fa fa-warning"></i></small>
 
@@ -32,7 +32,7 @@
 
         <br>
         <div class="form-group">
-          <label class="form-label">*Role:</label>
+          <label class="form-label">Role <i style="color: red;">*</i></label>
           <select formControlName="role" class="form-select w-100 bg-light">
             <option *ngFor="let option of roleOptions" [value]="option">{{ option }}</option>
           </select>
@@ -41,7 +41,7 @@
         </div>
         <br>
         <div class="form-group">
-          <label class="form-label">*Password:</label>
+          <label class="form-label">Password <i style="color: red;">*</i></label>
           
           <div class="d-flex">
             <input type="text" formControlName="password" class="form-control" [type]="showPassword == true ? 'text' : 'password'"/> &nbsp;&nbsp;
