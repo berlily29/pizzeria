@@ -13,7 +13,7 @@
 
             <div class="mb-3">
               <label for="email" class="form-label">Email address <i style="color: red;">*</i></label>
-              <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email">
+              <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email" [ngClass]="{ 'is-invalid': loginForm.controls['email'].invalid && loginForm.controls['email'].touched }">
               <small style="color: red;" *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">Email Required <i class="fa fa-warning"></i></small>
 
             </div>
@@ -21,7 +21,7 @@
             <div class="mb-3">
               <label for="password" class="form-label">Password <i style="color: red;">*</i></label>
               <div class="d-flex">
-              <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password" [type]="showPassword == true ? 'text' : 'password'"> &nbsp;
+              <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password" [type]="showPassword == true ? 'text' : 'password'" [ngClass]="{ 'is-invalid': loginForm.controls['password'].invalid && loginForm.controls['password'].touched }"> &nbsp;
               <button class="btn btn-outline-secondary" type="button" (click)="togglePassword()"> 
                 <i class="bi" [ngClass]="{ 'bi-eye': !showPassword, 'bi-eye-slash': showPassword }"> </i> 
                 </button> 
